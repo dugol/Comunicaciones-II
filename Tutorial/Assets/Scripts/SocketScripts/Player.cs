@@ -8,13 +8,17 @@ public class Player : MonoBehaviour {
     public Vector3 position;
     public string id;
 
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start() {
         this.name = playerName;
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+    }
+
+    // Update is called once per frame
+    void Update() {
+
+    }
+
+    public void OnCollisionEnter(Collision other) {
+        Debug.Log(other.gameObject.name);
+    }
 }

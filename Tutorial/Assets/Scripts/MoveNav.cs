@@ -3,6 +3,9 @@ using System.Collections;
 
 public class MoveNav : MonoBehaviour {
 
+    public delegate void OnMove(Vector3 vec3);
+    public event OnMove OnCommandMove;
+
     // Use this for initialization
     Vector3 final;
     UnityEngine.AI.NavMeshAgent nav;
@@ -24,6 +27,10 @@ public class MoveNav : MonoBehaviour {
 
                 final = hit.point;
                 nav.SetDestination(final);
+                if (OnCommandMove != null)
+                {
+                    OnCommandMove(nav.gameObject.transform.position);
+                }             
 
             }
         }
